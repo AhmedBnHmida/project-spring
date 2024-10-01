@@ -1,4 +1,4 @@
-package tn.esprit.ahmed4twin5.entities;
+package tn.esprit.ahmedbenhmida4twin5.entities;
 
 import jakarta.persistence.*;
 
@@ -13,5 +13,8 @@ public class Subscription {
     private LocalDate startDate;
     private LocalDate endDate;
     private float price;
+    @Enumerated(EnumType.STRING)
     private TypeSubscription typeSub;
+    @OneToOne
+    Skier skier;
 }

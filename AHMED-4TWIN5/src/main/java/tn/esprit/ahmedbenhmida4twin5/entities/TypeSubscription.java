@@ -1,4 +1,4 @@
-package tn.esprit.ahmed4twin5.entities;
+package tn.esprit.ahmedbenhmida4twin5.entities;
 
 public enum TypeSubscription {
     ANNUAL ,

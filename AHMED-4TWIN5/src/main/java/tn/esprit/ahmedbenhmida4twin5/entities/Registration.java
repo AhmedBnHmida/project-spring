@@ -1,4 +1,4 @@
-package tn.esprit.ahmed4twin5.entities;
+package tn.esprit.ahmedbenhmida4twin5.entities;
 
 import jakarta.persistence.*;
 
@@ -8,4 +8,8 @@ public class Registration {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int numRegistration ;
     private int numWeek;
+    @ManyToOne
+    Skier skier;
+    @ManyToOne
+    course course;
 }

@@ -1,8 +1,10 @@
-package tn.esprit.ahmed4twin5.entities;
+package tn.esprit.ahmedbenhmida4twin5.entities;
 
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.Set;
+
 @Entity
 public class Instructor {
     @Id
@@ -10,4 +12,6 @@ public class Instructor {
     private int numInstructor;
     private String name;
     private LocalDate dateOfHire;
+    @OneToMany
+    Set<course> coures;
 }

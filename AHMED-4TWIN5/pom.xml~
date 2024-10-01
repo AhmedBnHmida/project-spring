@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>tn.esprit</groupId>
-    <artifactId>AHMEDBENHMIDA-4TWIN5</artifactId>
+    <artifactId>AHMED-4TWIN5</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>AHMED-4TWIN5</name>
     <description>AHMED-4TWIN5</description>
