@@ -12,16 +12,18 @@ import java.util.Set;
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Entity
-public class Piste implements Serializable {
+public class course implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-     int numPiste;
-     String namePiste;
+    private int numCourse;
+    private int level ;
     @Enumerated(EnumType.STRING)
-    Color color;
-     int length;
-     int slope;
+    TypeCourse typeCourse ;
+    @Enumerated(EnumType.STRING)
+    Support support;
+    private float price;
+    private int timeSlot;
+    @OneToMany(mappedBy = "course")
+    Set<Registration> registrations;
 
-    @ManyToMany
-    Set<Skier> skiers;
 }

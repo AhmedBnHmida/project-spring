@@ -3,18 +3,27 @@ package tn.esprit.ahmedbenhmida4twin5.entities;
 import jakarta.persistence.*;
 
 import jakarta.persistence.Id;
+import lombok.*;
+import lombok.experimental.FieldDefaults;
 
+import java.io.Serializable;
 import java.time.LocalDate;
+
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE)
 @Entity
-public class Subscription {
+public class Subscription implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int numSub;
-    private LocalDate startDate;
-    private LocalDate endDate;
-    private float price;
+     int numSub;
+     LocalDate startDate;
+     LocalDate endDate;
+     float price;
     @Enumerated(EnumType.STRING)
-    private TypeSubscription typeSub;
+     TypeSubscription typeSub;
     @OneToOne
     Skier skier;
 }
