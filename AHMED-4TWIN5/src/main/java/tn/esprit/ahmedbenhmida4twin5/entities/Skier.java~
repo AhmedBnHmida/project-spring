@@ -23,10 +23,9 @@ public class Skier implements Serializable {
      int idSkier;
      String name;
      LocalDate birthDate;
-
-    @OneToOne(cascade = {CascadeType.REMOVE,CascadeType.PERSIST})
-    Subscription suscription;
-    @OneToMany(mappedBy = "skier", fetch = FetchType.EAGER)
+    @OneToOne(mappedBy = "skier")
+    Subscription subscriptions;
+    @OneToMany(mappedBy = "skier")
     Set<Registration> registrations;
     @ManyToMany(mappedBy = "skiers")
     Set<Piste> pistes;

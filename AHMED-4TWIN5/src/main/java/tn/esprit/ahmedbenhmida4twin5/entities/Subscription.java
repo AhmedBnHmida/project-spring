@@ -24,6 +24,5 @@ public class Subscription implements Serializable {
      float price;
     @Enumerated(EnumType.STRING)
      TypeSubscription typeSub;
-    @OneToOne
-    Skier skier;
+
 }
