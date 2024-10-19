@@ -3,9 +3,11 @@ package tn.esprit.ahmedbenhmida4twin5.entities;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.Set;
 
 
@@ -21,8 +23,11 @@ public class Skier implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
      int idSkier;
-     String name;
-     LocalDate birthDate;
+     String firstname;
+     String lastname;
+     @DateTimeFormat(pattern = "yyyy-MM-dd")
+     Date dateofbirth;
+     String city;
 
     @OneToOne(cascade = {CascadeType.REMOVE,CascadeType.PERSIST})
     Subscription suscription;
