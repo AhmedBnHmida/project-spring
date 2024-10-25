@@ -5,31 +5,25 @@ import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 import java.io.Serializable;
-import java.time.LocalDate;
 import java.util.Set;
-
-
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Entity
-//@Table(name="t_skier")
-public class Skier implements Serializable {
-
+public class Course implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-     int idSkier;
-     String name;
-     LocalDate birthDate;
-
-    @OneToOne(cascade = {CascadeType.REMOVE,CascadeType.PERSIST})
-    Subscription suscription;
-    @OneToMany(mappedBy = "skier", fetch = FetchType.EAGER)
+    int numCourse;
+    int level ;
+    @Enumerated(EnumType.STRING)
+    TypeCourse typeCourse ;
+    @Enumerated(EnumType.STRING)
+    Support support;
+    float price;
+    int timeSlot;
+    @OneToMany(mappedBy = "course")
     Set<Registration> registrations;
-    @ManyToMany(mappedBy = "skiers")
-    Set<Piste> pistes;
-
 
 }

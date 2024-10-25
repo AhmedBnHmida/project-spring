@@ -2,7 +2,9 @@ package tn.esprit.ahmedbenhmida4twin5.services;
 import tn.esprit.ahmedbenhmida4twin5.entities.Skier;
 
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 public interface ISkierServices {
 
@@ -11,4 +13,7 @@ public interface ISkierServices {
     Skier retrieveSkier(Long id);
     List<Skier> retrieveAll();
     void removeSkier(Long id);
+    void assignSkierToPiste(Long idSkier, Long idPiste);
+    Skier getByFirstAndLastname(String firstname, String lastname);
+    Set<Skier> getSkiersByDateofbirth(LocalDate dateofbirth);
 }

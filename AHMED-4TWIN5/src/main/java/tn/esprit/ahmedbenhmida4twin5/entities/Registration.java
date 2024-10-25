@@ -20,5 +20,5 @@ public class Registration implements Serializable{
     @ManyToOne
     Skier skier;
     @ManyToOne
-    course course;
+    Course course;
 }

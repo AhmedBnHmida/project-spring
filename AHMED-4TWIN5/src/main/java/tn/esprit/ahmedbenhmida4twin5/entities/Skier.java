@@ -26,7 +26,7 @@ public class Skier implements Serializable {
      String firstname;
      String lastname;
      @DateTimeFormat(pattern = "yyyy-MM-dd")
-     Date dateofbirth;
+     LocalDate dateofbirth;
      String city;
 
     @OneToOne(cascade = {CascadeType.REMOVE,CascadeType.PERSIST})

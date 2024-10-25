@@ -1,7 +1,8 @@
 package tn.esprit.ahmedbenhmida4twin5.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import tn.esprit.ahmedbenhmida4twin5.entities.course;
+import tn.esprit.ahmedbenhmida4twin5.entities.Course;
 
-public interface ICourseRepository extends JpaRepository<course, Integer> {
+
+public interface ICourseRepository extends JpaRepository<Course, Long> {
 }

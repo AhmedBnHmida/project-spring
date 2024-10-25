@@ -9,7 +9,6 @@ import tn.esprit.ahmedbenhmida4twin5.repositories.IPisteRepository;
 import tn.esprit.ahmedbenhmida4twin5.repositories.ISkierRepository;
 import tn.esprit.ahmedbenhmida4twin5.repositories.ISubscriptionRepository;
 
-import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
@@ -68,7 +67,7 @@ public class SkierServicesImpl implements ISkierServices {
         return skierRepository.findByFirstnameAndLastname(firstname, lastname);
     }
     @Override
-    public Set<Skier> getSkiersByDateofbirth(LocalDate dateofbirth){
+    public Set<Skier> getSkiersByDateofbirth(Date dateofbirth){
         return skierRepository.findAllByDateofbirth(dateofbirth);
     }
 }
