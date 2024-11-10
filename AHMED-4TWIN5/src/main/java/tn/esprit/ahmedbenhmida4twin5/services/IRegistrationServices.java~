@@ -13,6 +13,4 @@ public interface IRegistrationServices {
     void removeRegistration(Long id);
 
     Registration addRegistrationAndAssignToSkier(Registration registration, Long idSkier);
-
-    Registration assignRegistrationToCourse(Registration registration, Long idCourse);
 }

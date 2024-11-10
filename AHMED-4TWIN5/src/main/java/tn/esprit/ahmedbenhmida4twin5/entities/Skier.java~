@@ -29,13 +29,11 @@ public class Skier implements Serializable {
      @DateTimeFormat(pattern = "yyyy-MM-dd")
      LocalDate dateofbirth;
      String city;
-    @JsonIgnore
+@JsonIgnore
     @OneToOne(cascade = {CascadeType.REMOVE,CascadeType.PERSIST})
     Subscription suscription;
-    @JsonIgnore
     @OneToMany(mappedBy = "skier", fetch = FetchType.EAGER)
     Set<Registration> registrations;
-    @JsonIgnore
     @ManyToMany(mappedBy = "skiers")
     Set<Piste> pistes;
 

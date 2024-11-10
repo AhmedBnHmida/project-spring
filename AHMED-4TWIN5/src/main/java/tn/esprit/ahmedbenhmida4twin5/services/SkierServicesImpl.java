@@ -2,6 +2,7 @@ package tn.esprit.ahmedbenhmida4twin5.services;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import tn.esprit.ahmedbenhmida4twin5.entities.Color;
 import tn.esprit.ahmedbenhmida4twin5.entities.Piste;
 import tn.esprit.ahmedbenhmida4twin5.entities.Skier;
 import tn.esprit.ahmedbenhmida4twin5.entities.Subscription;
@@ -70,5 +71,24 @@ public class SkierServicesImpl implements ISkierServices {
     @Override
     public Set<Skier> getSkiersByDateofbirth(LocalDate dateofbirth){
         return skierRepository.findAllByDateofbirth(dateofbirth);
+    }
+
+    @Override
+    public List<Skier> assignSkierToPiste(String fname, String lname, Color color){
+        List<Skier> skier = skierRepository.findSkierByFirstnameAndLastname(fname, lname);
+        List<Piste> piste = pisteRepository.findByColor(color);
+        /*
+        for(Skier s : skier) {
+            for(Piste p : piste) {
+                s.getPistes().add(p);
+            }
+            skierRepository.save(s);
+        }
+        */
+        for(Skier s : skier) {
+            s.getPistes().addAll(piste);  // Add all pistes at once
+            skierRepository.save(s);
+        }
+        return skier;
     }
 }

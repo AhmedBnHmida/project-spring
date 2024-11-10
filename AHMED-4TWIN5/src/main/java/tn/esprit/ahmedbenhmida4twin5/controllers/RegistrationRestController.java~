@@ -27,9 +27,4 @@ public class RegistrationRestController {
         return RegistrationServices.addRegistrationAndAssignToSkier(Registration,idSkier);
     }
 
-    @PostMapping("/addc/{idCourse}")
-    public Registration assignRegistrationToCourse(@RequestBody Registration Registration, @PathVariable Long idCourse) {
-        return RegistrationServices.assignRegistrationToCourse(Registration,idCourse);
-    }
-
 }

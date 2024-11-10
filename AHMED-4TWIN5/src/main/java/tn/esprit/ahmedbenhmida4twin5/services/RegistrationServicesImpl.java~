@@ -47,9 +47,9 @@ public class RegistrationServicesImpl implements IRegistrationServices {
     }
 
     @Override
-    public Registration assignRegistrationToCourse(Registration registration, Long numCourse){
+    public Registration assignRegistrationToCourse(Registration registration, Long idCourse){
 
-        registration.setCourse(courserepository.findCourseBynumCourse(numCourse));
+        registration.setCourse(courserepository.findCourseByIdCourse(idCourse));
         return RegistrationRepository.save(registration);
     }
 }

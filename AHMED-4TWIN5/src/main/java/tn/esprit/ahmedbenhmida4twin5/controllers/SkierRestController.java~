@@ -55,7 +55,7 @@ public class SkierRestController {
         //Date date = new Date(dateofbirth);
         return skierServices.getSkiersByDateofbirth(dateofbirth);
     }
-    @PostMapping("/assignSkierToPiste/{fname}/{lname}/{color}")
+    @PutMapping("/assignSkierToPiste/{fname}/{lname}/{color}")
     public List<Skier> assignSkierToPiste(@PathVariable String fname,@PathVariable String lname,@PathVariable Color color){
         return skierServices.assignSkierToPiste(fname, lname, color);
     }

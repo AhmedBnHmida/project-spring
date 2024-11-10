@@ -5,4 +5,5 @@ import tn.esprit.ahmedbenhmida4twin5.entities.Course;
 
 
 public interface ICourseRepository extends JpaRepository<Course, Long> {
+    Course findCourseBynumCourse(Long numCourse);
 }
