@@ -62,9 +62,6 @@ public class InstructorServicesImpl implements IInstructorServices {
     @Override
     public Instructor AddAndassignToCourse(Instructor Instructor){
         Set<Course> courses = Instructor.getCoures();
-        if (courses == null) {
-            Instructor.setCoures(new HashSet<>()); // Initialize courses with an empty Set
-        }
         for (Course course : courses) {
             Instructor.getCoures().add(course);
         }

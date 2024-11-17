@@ -18,4 +18,6 @@ public interface ISkierServices {
     Skier getByFirstAndLastname(String firstname, String lastname);
     Set<Skier> getSkiersByDateofbirth(LocalDate dateofbirth);
     List<Skier> assignSkierToPiste(String fname, String lname, Color color);
-}
+    Skier AddSkierAndAssignToCourse(Skier skier, Long idCourse);
+
+    }

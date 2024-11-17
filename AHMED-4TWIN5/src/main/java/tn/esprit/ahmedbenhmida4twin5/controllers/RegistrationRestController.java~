@@ -2,29 +2,50 @@ package tn.esprit.ahmedbenhmida4twin5.controllers;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+import tn.esprit.ahmedbenhmida4twin5.entities.Instructor;
 import tn.esprit.ahmedbenhmida4twin5.entities.Registration;
+import tn.esprit.ahmedbenhmida4twin5.services.IInstructorServices;
 import tn.esprit.ahmedbenhmida4twin5.services.IRegistrationServices;
 import tn.esprit.ahmedbenhmida4twin5.services.RegistrationServicesImpl;
+
+import java.util.List;
+
 @RequiredArgsConstructor
 @RequestMapping("/Registration")
 @RestController
 public class RegistrationRestController {
 
-    private final IRegistrationServices RegistrationServices;
+    private final IInstructorServices InstructorServices;
 
-    @PostMapping("/add")
-    public Registration saveRegistration(@RequestBody Registration Registration) {
-        return RegistrationServices.addRegistration(Registration);
-    }
+    @GetMapping("/getAll")
+    public List<Instructor> getAllInstructors() {return InstructorServices.retrieveAll();}
 
     @GetMapping("/get/{id}")
-    public Registration getRegistration(@PathVariable Long id) {
-        return RegistrationServices.retrieveRegistration(id);
+    public Instructor getInstructor(@PathVariable Long id) {
+        return InstructorServices.retrieveInstructor(id);
     }
+
+    @PostMapping("/add")
+    public Instructor saveInstructor(@RequestBody Instructor Instructor) {
+        return InstructorServices.addInstructor(Instructor);
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public void deleteInstructor(@PathVariable Long id) {InstructorServices.removeInstructor(id);}
+
+    @PutMapping("/update") public Instructor updateSkier(@RequestBody Instructor Instructor) {return InstructorServices.updateInstructor(Instructor);}
+
+
+
 
     @PostMapping("/addd/{idSkier}")
     public Registration addRegistrationAndAssignToSkier(@RequestBody Registration Registration, @PathVariable Long idSkier) {
         return RegistrationServices.addRegistrationAndAssignToSkier(Registration,idSkier);
+    }
+
+    @PostMapping("/addc/{idCourse}")
+    public Registration assignRegistrationToCourse(@RequestBody Registration Registration, @PathVariable Long idCourse) {
+        return RegistrationServices.assignRegistrationToCourse(Registration,idCourse);
     }
 
 }

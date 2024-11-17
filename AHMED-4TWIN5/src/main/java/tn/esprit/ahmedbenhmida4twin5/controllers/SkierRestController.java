@@ -1,10 +1,13 @@
 package tn.esprit.ahmedbenhmida4twin5.controllers;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.ahmedbenhmida4twin5.entities.Color;
+import tn.esprit.ahmedbenhmida4twin5.entities.Registration;
 import tn.esprit.ahmedbenhmida4twin5.entities.Skier;
 import tn.esprit.ahmedbenhmida4twin5.services.ISkierServices;
 import tn.esprit.ahmedbenhmida4twin5.services.SkierServicesImpl;
@@ -13,22 +16,26 @@ import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
-
+@Tag(name = "Gestion Skier")
 @RequiredArgsConstructor
-@RequestMapping("/Skier")
 @RestController
+@RequestMapping("/Skier")
 public class SkierRestController {
 
     private final ISkierServices skierServices;
 
-    @PostMapping("/add")
-    public Skier saveSkier(@RequestBody Skier skier) {
-        return skierServices.addSkier(skier);
-    }
+    @Operation(description = "GET ALL Skier from the database")
+    @GetMapping("/getAll")
+    public List<Skier> getAllRegistrations() {return skierServices.retrieveAll();}
 
     @GetMapping("/get/{id}")
     public Skier getSkier(@PathVariable Long id) {
         return skierServices.retrieveSkier(id);
+    }
+
+    @PostMapping("/add")
+    public Skier saveSkier(@RequestBody Skier skier) {
+        return skierServices.addSkier(skier);
     }
 
     @DeleteMapping("/delete/{id}")
@@ -58,5 +65,10 @@ public class SkierRestController {
     @PostMapping("/assignSkierToPiste/{fname}/{lname}/{color}")
     public List<Skier> assignSkierToPiste(@PathVariable String fname,@PathVariable String lname,@PathVariable Color color){
         return skierServices.assignSkierToPiste(fname, lname, color);
+    }
+
+    @PostMapping("/AddSkierAndAssignToCourse/{idCourse}")
+    public Skier addSkierAndAssignToCourse(@RequestBody Skier skier,@PathVariable Long idCourse){
+       return skierServices.AddSkierAndAssignToCourse(skier,idCourse);
     }
 }

@@ -2,13 +2,8 @@ package tn.esprit.ahmedbenhmida4twin5.services;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import tn.esprit.ahmedbenhmida4twin5.entities.Color;
-import tn.esprit.ahmedbenhmida4twin5.entities.Piste;
-import tn.esprit.ahmedbenhmida4twin5.entities.Skier;
-import tn.esprit.ahmedbenhmida4twin5.entities.Subscription;
-import tn.esprit.ahmedbenhmida4twin5.repositories.IPisteRepository;
-import tn.esprit.ahmedbenhmida4twin5.repositories.ISkierRepository;
-import tn.esprit.ahmedbenhmida4twin5.repositories.ISubscriptionRepository;
+import tn.esprit.ahmedbenhmida4twin5.entities.*;
+import tn.esprit.ahmedbenhmida4twin5.repositories.*;
 
 import java.time.LocalDate;
 import java.util.Date;
@@ -21,6 +16,9 @@ public class SkierServicesImpl implements ISkierServices {
 
     private final ISkierRepository skierRepository;
     private final IPisteRepository pisteRepository;
+    private final ICourseRepository courseRepository;
+    private final IRegistrationRepository registrationRepository;
+    private final ISubscriptionRepository subscriptionRepository;
     private final ISubscriptionRepository suscriptionRe;
 
     @Override
@@ -90,5 +88,22 @@ public class SkierServicesImpl implements ISkierServices {
             skierRepository.save(s);
         }
         return skier;
+    }
+
+    @Override
+    public Skier AddSkierAndAssignToCourse(Skier skier, Long idCourse) {
+
+        Course course = courseRepository.findById(idCourse).orElse(null);
+
+        Set<Registration> r = skier.getRegistrations();
+        /*
+        Subscription s = skier.getSuscription();
+        subscriptionRepository.save(s);
+        */
+        for(Registration reg : r) {
+            reg.setCourse(course);
+            registrationRepository.save(reg);
+        }
+        return skierRepository.save(skier);
     }
 }

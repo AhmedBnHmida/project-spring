@@ -8,4 +8,7 @@ import java.util.List;
 
 public interface ICourseRepository extends JpaRepository<Course, Long> {
     Course findCourseBynumCourse(Long numCourse);
+    Course findByNumCourse(Long numCourse);
+
+    List<Course> findAllByNumCourse(List<Long> numCourse);
 }
