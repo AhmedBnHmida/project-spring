@@ -1,6 +1,7 @@
 package tn.esprit.ahmedbenhmida4twin5.services;
 import tn.esprit.ahmedbenhmida4twin5.entities.Color;
 import tn.esprit.ahmedbenhmida4twin5.entities.Skier;
+import tn.esprit.ahmedbenhmida4twin5.entities.TypeSubscription;
 
 import java.time.LocalDate;
 import java.util.Date;
@@ -19,5 +20,5 @@ public interface ISkierServices {
     Set<Skier> getSkiersByDateofbirth(LocalDate dateofbirth);
     List<Skier> assignSkierToPiste(String fname, String lname, Color color);
     Skier AddSkierAndAssignToCourse(Skier skier, Long idCourse);
-
+    List<Skier> retrieveSkierBySubscriptionType(TypeSubscription typeSub);
     }

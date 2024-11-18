@@ -4,13 +4,11 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.ahmedbenhmida4twin5.entities.Subscription;
 import tn.esprit.ahmedbenhmida4twin5.entities.Subscription;
-import tn.esprit.ahmedbenhmida4twin5.entities.TypeSubscription;
 import tn.esprit.ahmedbenhmida4twin5.services.ISubscriptionServices;
 import tn.esprit.ahmedbenhmida4twin5.services.ISubscriptionServices;
 import tn.esprit.ahmedbenhmida4twin5.services.SubscriptionServicesImpl;
 
 import java.util.List;
-import java.util.Set;
 
 @RequiredArgsConstructor
 @RequestMapping("/Subscription")
@@ -37,9 +35,6 @@ public class SubscriptionRestController {
 
     @PutMapping("/update") public Subscription updateSkier(@RequestBody Subscription Subscription) {return SubscriptionServices.updateSubscription(Subscription);}
 
-    @GetMapping("/getSubscriptionsByType/{typeSubscription}")
-    public Set<Subscription> getSubscriptionsByType(@PathVariable TypeSubscription typeSubscription) {
-        return SubscriptionServices.getSubscriptionByType(typeSubscription);
-    }
+    
 
 }

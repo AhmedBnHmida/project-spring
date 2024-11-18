@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import tn.esprit.ahmedbenhmida4twin5.entities.Color;
 import tn.esprit.ahmedbenhmida4twin5.entities.Registration;
 import tn.esprit.ahmedbenhmida4twin5.entities.Skier;
+import tn.esprit.ahmedbenhmida4twin5.entities.TypeSubscription;
 import tn.esprit.ahmedbenhmida4twin5.services.ISkierServices;
 import tn.esprit.ahmedbenhmida4twin5.services.SkierServicesImpl;
 
@@ -70,5 +71,10 @@ public class SkierRestController {
     @PostMapping("/AddSkierAndAssignToCourse/{idCourse}")
     public Skier addSkierAndAssignToCourse(@RequestBody Skier skier,@PathVariable Long idCourse){
        return skierServices.AddSkierAndAssignToCourse(skier,idCourse);
+    }
+
+    @GetMapping("/retrieveSkierBySubscriptionType/{typeSubscription}")
+    public List<Skier> retrieveSkierBySubscriptionType(@PathVariable TypeSubscription typeSubscription) {
+        return skierServices.retrieveSkierBySubscriptionType(typeSubscription);
     }
 }

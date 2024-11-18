@@ -7,6 +7,7 @@ import tn.esprit.ahmedbenhmida4twin5.repositories.*;
 
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -90,20 +91,31 @@ public class SkierServicesImpl implements ISkierServices {
         return skier;
     }
 
-    @Override
-    public Skier AddSkierAndAssignToCourse(Skier skier, Long idCourse) {
+    public Skier AddSkierAndAssignToCourse(Skier skier, Long numCourse) {
 
-        Course course = courseRepository.findById(idCourse).orElse(null);
-
-        Set<Registration> r = skier.getRegistrations();
+        // Ensure the subscription is saved
         /*
-        Subscription s = skier.getSuscription();
-        subscriptionRepository.save(s);
-        */
-        for(Registration reg : r) {
-            reg.setCourse(course);
-            registrationRepository.save(reg);
+        if (skier.getSubscription() != null) {
+            subscriptionRepository.save(skier.getSuscription());
         }
-        return skierRepository.save(skier);
+        */
+
+        Registration registration = new Registration();
+        registration.setSkier(skier);
+        registration.setCourse(courseRepository.findById(numCourse).orElse(null));
+
+        Set<Registration> r =new HashSet<>();
+        r.add(registration);
+        skier.setRegistrations(r);
+
+        skierRepository.save(skier);
+        registrationRepository.save(registration);
+
+        return skier;
+    }
+
+    @Override
+    public List<Skier> retrieveSkierBySubscriptionType(TypeSubscription typeSubscription) {
+        return skierRepository.findBySuscription_TypeSub(typeSubscription);
     }
 }

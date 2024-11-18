@@ -3,9 +3,12 @@ package tn.esprit.ahmedbenhmida4twin5.services;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import tn.esprit.ahmedbenhmida4twin5.entities.Subscription;
+import tn.esprit.ahmedbenhmida4twin5.entities.TypeSubscription;
 import tn.esprit.ahmedbenhmida4twin5.repositories.ISubscriptionRepository;
 
 import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 
 @RequiredArgsConstructor
 @Service
@@ -36,5 +39,10 @@ public class SubscriptionServicesImpl implements ISubscriptionServices {
     @Override
     public void removeSubscription(Long id) {
         SubscriptionRepository.deleteById(id);
+    }
+
+    @Override
+    public Set<Subscription> getSubscriptionByType(TypeSubscription typeSubscription) {
+        return SubscriptionRepository.findByTypeSubOrderByStartDate(typeSubscription);
     }
 }

@@ -29,8 +29,9 @@ public class Skier implements Serializable {
      @DateTimeFormat(pattern = "yyyy-MM-dd")
      LocalDate dateofbirth;
      String city;
-    @JsonIgnore
-    @OneToOne(cascade = {CascadeType.REMOVE,CascadeType.PERSIST})
+    //@JsonIgnore
+   // @OneToOne(cascade = {CascadeType.REMOVE,CascadeType.PERSIST})
+    @OneToOne(cascade = CascadeType.ALL)
     Subscription suscription;
     @JsonIgnore
     @OneToMany(mappedBy = "skier", fetch = FetchType.EAGER)
