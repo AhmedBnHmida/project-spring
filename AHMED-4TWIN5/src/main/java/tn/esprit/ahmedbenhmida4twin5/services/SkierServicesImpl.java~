@@ -90,9 +90,15 @@ public class SkierServicesImpl implements ISkierServices {
         }
         return skier;
     }
-/*
+
     public Skier AddSkierAndAssignToCourse(Skier skier, Long numCourse) {
 
+        // Ensure the subscription is saved
+        /*
+        if (skier.getSubscription() != null) {
+            subscriptionRepository.save(skier.getSuscription());
+        }
+        */
 
         Registration registration = new Registration();
         registration.setSkier(skier);
@@ -107,40 +113,6 @@ public class SkierServicesImpl implements ISkierServices {
 
         return skier;
     }
-
- */
-public Skier AddSkierAndAssignToCourse(Skier skier, Long numCourse) {
-    /*
-    // Save the subscription (if it exists)
-    if (skier.getSuscription() != null) {
-        subscriptionRepository.save(skier.getSuscription());
-    }
-     */
-
-    // Create a set for registrations
-    Set<Registration> registrations = new HashSet<>();
-
-    // Populate registrations based on the input skier's registrations
-    if (skier.getRegistrations() != null) {
-        for (Registration reg : skier.getRegistrations()) {
-            Registration registration = new Registration();
-            registration.setNumWeek(reg.getNumWeek());
-            registration.setSkier(skier);
-            registration.setCourse(courseRepository.findById(numCourse).orElse(null));
-            registrations.add(registration);
-        }
-    }
-
-    skier.setRegistrations(registrations);
-    skierRepository.save(skier);
-
-    for (Registration registration : registrations) {
-        registrationRepository.save(registration);
-    }
-
-    return skier;
-}
-
 
     @Override
     public List<Skier> retrieveSkierBySubscriptionType(TypeSubscription typeSubscription) {

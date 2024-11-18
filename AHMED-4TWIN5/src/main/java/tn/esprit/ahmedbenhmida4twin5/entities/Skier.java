@@ -33,7 +33,7 @@ public class Skier implements Serializable {
    // @OneToOne(cascade = {CascadeType.REMOVE,CascadeType.PERSIST})
     @OneToOne(cascade = CascadeType.ALL)
     Subscription suscription;
-    @JsonIgnore
+    //@JsonIgnore
     @OneToMany(mappedBy = "skier", fetch = FetchType.EAGER)
     Set<Registration> registrations;
     @JsonIgnore
