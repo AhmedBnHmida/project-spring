@@ -5,6 +5,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.ahmedbenhmida4twin5.entities.Color;
 import tn.esprit.ahmedbenhmida4twin5.entities.Registration;
@@ -20,6 +21,7 @@ import java.util.Set;
 @Tag(name = "Gestion Skier")
 @RequiredArgsConstructor
 @RestController
+//@Controller
 @RequestMapping("/Skier")
 public class SkierRestController {
 

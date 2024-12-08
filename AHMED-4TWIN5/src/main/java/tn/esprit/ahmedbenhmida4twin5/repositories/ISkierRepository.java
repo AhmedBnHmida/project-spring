@@ -5,6 +5,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
 import tn.esprit.ahmedbenhmida4twin5.entities.Skier;
 import tn.esprit.ahmedbenhmida4twin5.entities.TypeSubscription;
 
@@ -12,7 +13,7 @@ import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
-
+@Repository
 public interface ISkierRepository extends JpaRepository< Skier , Long > {
     Skier findByFirstnameAndLastname(String firstname, String lastname);
     Set<Skier> findAllByDateofbirth(LocalDate dateofbirth);

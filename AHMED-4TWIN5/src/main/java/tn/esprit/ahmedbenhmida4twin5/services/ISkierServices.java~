@@ -10,7 +10,7 @@ import java.util.Set;
 
 public interface ISkierServices {
 
-    void getSkiernatif();
+   // void getSkiernatif();
 
 
     Skier addSkier(Skier skier);

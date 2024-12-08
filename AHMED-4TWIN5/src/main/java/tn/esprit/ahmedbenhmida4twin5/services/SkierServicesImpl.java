@@ -1,6 +1,8 @@
 package tn.esprit.ahmedbenhmida4twin5.services;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import tn.esprit.ahmedbenhmida4twin5.entities.*;
 import tn.esprit.ahmedbenhmida4twin5.repositories.*;
@@ -13,6 +15,7 @@ import java.util.Set;
 
 @RequiredArgsConstructor
 @Service
+@Slf4j
 public class SkierServicesImpl implements ISkierServices {
 
     private final ISkierRepository skierRepository;
@@ -146,4 +149,14 @@ public Skier AddSkierAndAssignToCourse(Skier skier, Long numCourse) {
     public List<Skier> retrieveSkierBySubscriptionType(TypeSubscription typeSubscription) {
         return skierRepository.findBySuscription_TypeSub(typeSubscription);
     }
+
+    @Scheduled(fixedDelay = 6000)
+    @Override
+    public void getSkiernatif() {
+        System.out.println("Bonjour");
+        log.info("bonjour");
+        log.warn("warning!");
+        log.error("§");
+    }
+
 }
