@@ -19,10 +19,10 @@ public interface ISkierRepository extends JpaRepository< Skier , Long > {
     Set<Skier> findAllByDateofbirth(LocalDate dateofbirth);
     Skier findSkierByIdSkier(Long idSkier);
     List<Skier> findSkierByFirstnameAndLastname(String firstname, String lastname);
-
+    /*
     @Query("SELECT s FROM Skier s WHERE s.suscription.typeSub = :typeSubscription")
     List<Skier> findBySubscriptionType(@Param("typeSubscription") TypeSubscription typeSubscription);
-
+*/
     List<Skier> findBySuscription_TypeSub(TypeSubscription typeSubscription);
 
 }
